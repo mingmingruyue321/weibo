@@ -8,7 +8,11 @@
                         sex, 
                         address, 
                         introduce, 
-                        register_date
+                        register_date, 
+                        tag, 
+                        remark, 
+                        company, 
+                        level
                          )
                     values ( 
                         #{userId}, 
@@ -16,7 +20,11 @@
                         #{sex}, 
                         #{address}, 
                         #{introduce}, 
-                        #{registerDate}
+                        #{registerDate}, 
+                        #{tag}, 
+                        #{remark}, 
+                        #{company}, 
+                        #{level}
                          )
 </insert>
 <insert id="insertBatch" parameterType="java.util.List" >
@@ -26,7 +34,11 @@
                         sex, 
                         address, 
                         introduce, 
-                        register_date
+                        register_date, 
+                        tag, 
+                        remark, 
+                        company, 
+                        level
                          )
                     values 
     <foreach collection="list" item="item" index="index" separator=",">
@@ -36,7 +48,11 @@
                         #{item.sex}, 
                         #{item.address}, 
                         #{item.introduce}, 
-                        #{item.registerDate}
+                        #{item.registerDate}, 
+                        #{item.tag}, 
+                        #{item.remark}, 
+                        #{item.company}, 
+                        #{item.level}
                          )
     </foreach>
 </insert>
@@ -68,6 +84,18 @@
                 <if test="registerDate != null">
                     and register_date = #{registerDate}
                 </if>
+                <if test="tag != null">
+                    and tag = #{tag}
+                </if>
+                <if test="remark != null">
+                    and remark = #{remark}
+                </if>
+                <if test="company != null">
+                    and company = #{company}
+                </if>
+                <if test="level != null">
+                    and level = #{level}
+                </if>
             </trim>
         </if>
 </delete>
@@ -80,7 +108,11 @@
             sex = #{sex},
             address = #{address},
             introduce = #{introduce},
-            register_date = #{registerDate}
+            register_date = #{registerDate},
+            tag = #{tag},
+            remark = #{remark},
+            company = #{company},
+            level = #{level}
         where user_id = #{userId}
 </update>
 <update id="updateByPrimaryKeySelective" parameterType="mmry.weibo.data.domain.UserInfoDto">
@@ -104,6 +136,18 @@
                 <if test="registerDate != null">
                     register_date = #{registerDate}
                 </if>
+                <if test="tag != null">
+                    tag = #{tag}
+                </if>
+                <if test="remark != null">
+                    remark = #{remark}
+                </if>
+                <if test="company != null">
+                    company = #{company}
+                </if>
+                <if test="level != null">
+                    level = #{level}
+                </if>
             </set>
         where user_id = #{userId}
 </update>
@@ -116,7 +160,11 @@
             sex = #{sex},
             address = #{address},
             introduce = #{introduce},
-            register_date = #{registerDate}
+            register_date = #{registerDate},
+            tag = #{tag},
+            remark = #{remark},
+            company = #{company},
+            level = #{level}
             where user_id = #{item.userId}
     </foreach>
 </update>
@@ -142,6 +190,18 @@
                 <if test="item.registerDate != null">
                     register_date = #{item.registerDate}
                 </if>
+                <if test="item.tag != null">
+                    tag = #{item.tag}
+                </if>
+                <if test="item.remark != null">
+                    remark = #{item.remark}
+                </if>
+                <if test="item.company != null">
+                    company = #{item.company}
+                </if>
+                <if test="item.level != null">
+                    level = #{item.level}
+                </if>
             </set>
         where user_id = #{item.userId}
     </foreach>
@@ -154,16 +214,20 @@
     <result column="address" property="address" />
     <result column="introduce" property="introduce" />
     <result column="register_date" property="registerDate" />
+    <result column="tag" property="tag" />
+    <result column="remark" property="remark" />
+    <result column="company" property="company" />
+    <result column="level" property="level" />
 </resultMap>
 <select id="selectByPrimaryKey" resultMap="BaseResultMap">
     select 
-        user_id,name,sex,address,introduce,register_date
+        user_id,name,sex,address,introduce,register_date,tag,remark,company,level
     from user_info
         where user_id = #{userId}
 </select>
 <select id="selectByUserInfoDto" parameterType="mmry.weibo.data.domain.UserInfoDto" resultMap="BaseResultMap">
     select 
-        user_id,name,sex,address,introduce,register_date
+        user_id,name,sex,address,introduce,register_date,tag,remark,company,level
     from user_info
         where 1!=1 
         <if test="_parameter != null">
@@ -185,6 +249,18 @@
                 </if>
                 <if test="registerDate != null">
                     and register_date = #{registerDate}
+                </if>
+                <if test="tag != null">
+                    and tag = #{tag}
+                </if>
+                <if test="remark != null">
+                    and remark = #{remark}
+                </if>
+                <if test="company != null">
+                    and company = #{company}
+                </if>
+                <if test="level != null">
+                    and level = #{level}
                 </if>
             </trim>
         </if>

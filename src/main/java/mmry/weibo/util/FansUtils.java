@@ -41,7 +41,7 @@ public class FansUtils {
 				fansid = fansid.substring(4,fansid.indexOf("&"));
 				//System.err.println(fansid);
 				////2775577381
-				fans.add("https://m.weibo.cn/api/container/getIndex?containerid=230283"+fansid+"_-_INFO");
+				fans.add("https://m.weibo.cn/api/container/getIndex?containerid=230283"+fansid+"_-_INFO&userid="+fansid);
 			}
 		}
 		//下一页

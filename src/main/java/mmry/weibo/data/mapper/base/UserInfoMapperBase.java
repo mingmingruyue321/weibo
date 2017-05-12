@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
  * InnoDB free: 30720 kB
  * @author mmry
  * @version 1.0
- * @generated 2017-05-12 06:33
+ * @generated 2017-05-12 08:02
  * ★★★警告：本文件不允许手动修改，如要增加方法，请手动在子接口中配置★★★
  */
 public interface UserInfoMapperBase {

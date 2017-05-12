@@ -7,7 +7,7 @@ import java.io.Serializable;
  * InnoDB free: 30720 kB
  * @author mmry
  * @version 1.0
- * @generated 2017-05-12 06:33
+ * @generated 2017-05-12 08:02
  * ★★★警告：本文件不允许手动修改，如表结构变更，请用工具生成替换★★★
  */
 public class UserInfoDtoBase implements Serializable{
@@ -38,6 +38,22 @@ public class UserInfoDtoBase implements Serializable{
      * 注册时间
      */
     private Date registerDate;
+    /**
+     * 标签
+     */
+    private String tag;
+    /**
+     * 备注
+     */
+    private String remark;
+    /**
+     * 公司
+     */
+    private String company;
+    /**
+     * 等级
+     */
+    private String level;
 
     /**
      * @return userId
@@ -81,6 +97,34 @@ public class UserInfoDtoBase implements Serializable{
     public Date getRegisterDate() {
         return registerDate;
     }
+    /**
+     * @return tag
+     * 标签
+     */
+    public String getTag() {
+        return tag;
+    }
+    /**
+     * @return remark
+     * 备注
+     */
+    public String getRemark() {
+        return remark;
+    }
+    /**
+     * @return company
+     * 公司
+     */
+    public String getCompany() {
+        return company;
+    }
+    /**
+     * @return level
+     * 等级
+     */
+    public String getLevel() {
+        return level;
+    }
 
     /**
      * @param userId
@@ -123,6 +167,34 @@ public class UserInfoDtoBase implements Serializable{
      */
     public void setRegisterDate(Date registerDate) {
         this.registerDate = registerDate;
+    }
+    /**
+     * @param tag
+     * 标签
+     */
+    public void setTag(String tag) {
+        this.tag = tag == null ? null : tag.trim();
+    }
+    /**
+     * @param remark
+     * 备注
+     */
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
+    /**
+     * @param company
+     * 公司
+     */
+    public void setCompany(String company) {
+        this.company = company == null ? null : company.trim();
+    }
+    /**
+     * @param level
+     * 等级
+     */
+    public void setLevel(String level) {
+        this.level = level == null ? null : level.trim();
     }
 
 }

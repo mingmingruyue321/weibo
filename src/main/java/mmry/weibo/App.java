@@ -6,6 +6,8 @@ import java.util.List;
 import mmry.weibo.util.FansUtils;
 
 import org.apache.commons.lang3.StringEscapeUtils;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
@@ -18,6 +20,7 @@ import us.codecraft.webmagic.processor.PageProcessor;
  */
 public class App implements PageProcessor {
 	public static int count=0;
+	public static ApplicationContext tx = new FileSystemXmlApplicationContext("classpath:spring-servlet.xml");
 	private String pageRegex = "(\\/p\\\\\\/[\\d]*\\\\\\/follow\\?pids=Pl_Official_HisRelation__60&relate=fans&page=[\\d]*#Pl_Official_HisRelation__60)";
 	private List<String> translateUrl(List<String> url){
 		String baseUrl = "http://weibo.com";
@@ -45,6 +48,7 @@ public class App implements PageProcessor {
     		String userinfo = StringEscapeUtils.unescapeJava(page.getRawText());
     		//System.err.println(userinfo);
     		page.putField("userinfo", userinfo);
+    		page.putField("fansid", page.getUrl().toString().split("userid=")[1]);
     	}
     } 
 
@@ -55,7 +59,7 @@ public class App implements PageProcessor {
 
     public static void main(String[] args) {
         Spider.create(new App())
-        	  .addUrl("http://weibo.com/p/1005055743580104/follow?relate=fans&page=1#Pl_Official_HisRelation__60")
+        	  .addUrl("http://weibo.com/p/1005052046390745/follow?relate=fans&page=1#Pl_Official_HisRelation__60")
         	  .addPipeline(new ConsolePipeline())
         	  .thread(10).run();
     }

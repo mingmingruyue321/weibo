@@ -3,6 +3,7 @@ package mmry.weibo;
 import mmry.weibo.data.domain.UserInfoDto;
 import mmry.weibo.data.mapper.UserInfoMapper;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -14,13 +15,15 @@ import junit.framework.TestSuite;
  * Unit test for simple App.
  */
 public class AppTest {
-	public static void main(String[] args) {
+	static{
 		ApplicationContext tx = new FileSystemXmlApplicationContext("classpath:spring-servlet.xml");
-		UserInfoMapper bean = tx.getBean(UserInfoMapper.class);
+	}
+	@Autowired
+	private static UserInfoMapper infoMapper ;
+	public static void main(String[] args) {
 		UserInfoDto infoDto = new UserInfoDto();
 		infoDto.setUserId("001");
 		infoDto.setName("zs");
-		bean.insert(infoDto);
-		System.err.println(bean);
+		infoMapper.insert(infoDto);
 	}
 }
