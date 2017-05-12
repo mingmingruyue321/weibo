@@ -1,5 +1,11 @@
 package mmry.weibo;
 
+import mmry.weibo.data.domain.UserInfoDto;
+import mmry.weibo.data.mapper.UserInfoMapper;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -7,32 +13,14 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+public class AppTest {
+	public static void main(String[] args) {
+		ApplicationContext tx = new FileSystemXmlApplicationContext("classpath:spring-servlet.xml");
+		UserInfoMapper bean = tx.getBean(UserInfoMapper.class);
+		UserInfoDto infoDto = new UserInfoDto();
+		infoDto.setUserId("001");
+		infoDto.setName("zs");
+		bean.insert(infoDto);
+		System.err.println(bean);
+	}
 }

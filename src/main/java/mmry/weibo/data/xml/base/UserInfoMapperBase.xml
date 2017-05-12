@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mmry.weibo.data.mapper.base.UserInfoMapperBase">
+<insert id="insert" parameterType="mmry.weibo.data.domain.UserInfoDto">
+    insert into user_info ( 
+                        user_id, 
+                        name, 
+                        sex, 
+                        address, 
+                        introduce, 
+                        register_date
+                         )
+                    values ( 
+                        #{userId}, 
+                        #{name}, 
+                        #{sex}, 
+                        #{address}, 
+                        #{introduce}, 
+                        #{registerDate}
+                         )
+</insert>
+<insert id="insertBatch" parameterType="java.util.List" >
+    insert into user_info ( 
+                        user_id, 
+                        name, 
+                        sex, 
+                        address, 
+                        introduce, 
+                        register_date
+                         )
+                    values 
+    <foreach collection="list" item="item" index="index" separator=",">
+                        ( 
+                        #{item.userId}, 
+                        #{item.name}, 
+                        #{item.sex}, 
+                        #{item.address}, 
+                        #{item.introduce}, 
+                        #{item.registerDate}
+                         )
+    </foreach>
+</insert>
+
+<delete id="deleteByPrimaryKey">
+    delete from user_info
+        where user_id = #{userId}
+</delete>
+<delete id="deleteByUserInfoDto" parameterType="mmry.weibo.data.domain.UserInfoDto">
+    delete from user_info
+        where 1!=1 
+        <if test="_parameter != null">
+            <trim prefix=" or (" prefixOverrides="and" suffix=")">
+                <if test="userId != null">
+                    and user_id = #{userId}
+                </if>
+                <if test="name != null">
+                    and name = #{name}
+                </if>
+                <if test="sex != null">
+                    and sex = #{sex}
+                </if>
+                <if test="address != null">
+                    and address = #{address}
+                </if>
+                <if test="introduce != null">
+                    and introduce = #{introduce}
+                </if>
+                <if test="registerDate != null">
+                    and register_date = #{registerDate}
+                </if>
+            </trim>
+        </if>
+</delete>
+
+<update id="updateByPrimaryKey" parameterType="mmry.weibo.data.domain.UserInfoDto">
+    update user_info
+        set
+            user_id = #{userId},
+            name = #{name},
+            sex = #{sex},
+            address = #{address},
+            introduce = #{introduce},
+            register_date = #{registerDate}
+        where user_id = #{userId}
+</update>
+<update id="updateByPrimaryKeySelective" parameterType="mmry.weibo.data.domain.UserInfoDto">
+    update user_info
+            <set>
+                <if test="userId != null">
+                    user_id = #{userId}
+                </if>
+                <if test="name != null">
+                    name = #{name}
+                </if>
+                <if test="sex != null">
+                    sex = #{sex}
+                </if>
+                <if test="address != null">
+                    address = #{address}
+                </if>
+                <if test="introduce != null">
+                    introduce = #{introduce}
+                </if>
+                <if test="registerDate != null">
+                    register_date = #{registerDate}
+                </if>
+            </set>
+        where user_id = #{userId}
+</update>
+<update id="updateByPrimaryKeyBatch" parameterType="java.util.List" >
+    <foreach collection="list" item="item" index="index" separator=";">
+        update user_info
+            set
+            user_id = #{userId},
+            name = #{name},
+            sex = #{sex},
+            address = #{address},
+            introduce = #{introduce},
+            register_date = #{registerDate}
+            where user_id = #{item.userId}
+    </foreach>
+</update>
+<update id="updateByPrimaryKeySelectiveBatch" parameterType="java.util.List" >
+    <foreach collection="list" item="item" index="index" separator=";">
+        update user_info
+            <set>
+                <if test="item.userId != null">
+                    user_id = #{item.userId}
+                </if>
+                <if test="item.name != null">
+                    name = #{item.name}
+                </if>
+                <if test="item.sex != null">
+                    sex = #{item.sex}
+                </if>
+                <if test="item.address != null">
+                    address = #{item.address}
+                </if>
+                <if test="item.introduce != null">
+                    introduce = #{item.introduce}
+                </if>
+                <if test="item.registerDate != null">
+                    register_date = #{item.registerDate}
+                </if>
+            </set>
+        where user_id = #{item.userId}
+    </foreach>
+</update>
+
+<resultMap id="BaseResultMap" type="mmry.weibo.data.domain.UserInfoDto">
+    <id column="user_id" property="userId" />
+    <result column="name" property="name" />
+    <result column="sex" property="sex" />
+    <result column="address" property="address" />
+    <result column="introduce" property="introduce" />
+    <result column="register_date" property="registerDate" />
+</resultMap>
+<select id="selectByPrimaryKey" resultMap="BaseResultMap">
+    select 
+        user_id,name,sex,address,introduce,register_date
+    from user_info
+        where user_id = #{userId}
+</select>
+<select id="selectByUserInfoDto" parameterType="mmry.weibo.data.domain.UserInfoDto" resultMap="BaseResultMap">
+    select 
+        user_id,name,sex,address,introduce,register_date
+    from user_info
+        where 1!=1 
+        <if test="_parameter != null">
+            <trim prefix=" or (" prefixOverrides="and" suffix=")">
+                <if test="userId != null">
+                    and user_id = #{userId}
+                </if>
+                <if test="name != null">
+                    and name = #{name}
+                </if>
+                <if test="sex != null">
+                    and sex = #{sex}
+                </if>
+                <if test="address != null">
+                    and address = #{address}
+                </if>
+                <if test="introduce != null">
+                    and introduce = #{introduce}
+                </if>
+                <if test="registerDate != null">
+                    and register_date = #{registerDate}
+                </if>
+            </trim>
+        </if>
+</select>
+
+
+</mapper>
