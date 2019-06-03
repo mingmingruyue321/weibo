@@ -33,7 +33,7 @@ public class App implements PageProcessor {
 	}
 
     private Site site = Site.me().setRetryTimes(3).setSleepTime(1000).setTimeOut(10000)
-    						.addCookie("Cookie", "SINAGLOBAL=1261975649007.8916.1493700312624; YF-Ugrow-G0=8751d9166f7676afdce9885c6d31cd61; login_sid_t=c633572a8fb2c79a8499e65eafbb774f; YF-V5-G0=55fccf7be1706b6814a78384fa94e30c; _s_tentry=-; Apache=2473941583273.0605.1494558368422; ULV=1494558369504:5:5:1:2473941583273.0605.1494558368422:1493946592061; UOR=www.csdn.net,widget.weibo.com,www.baidu.com; YF-Page-G0=0acee381afd48776ab7a56bd67c2e7ac; SCF=AiWLrI7xhKopF7DFlss7jQXLXXR3igakI8jd9AbeGMbaSrmgtH79m98Y6ArHkn6pfG0E8q7Yaug9o3PAgp28se0.; SUB=_2A250EVsUDeThGeRH7lYT9i_Fwz2IHXVXZ8vcrDV8PUNbmtANLWHckW9urTaKg3wtMd7piLEJW3WT1rVuQQ..; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WFKOSjIuVEayJOlV0ncx4x65JpX5K2hUgL.Foz4SKBESo241h22dJLoIEMLxKqL1KnL12-LxKqL1KnL12-LxK-LBKqL1hzLxKqL1-eL1hn0eo2t; SUHB=02M_QvsonJdonc; ALF=1526095555; SSOLoginState=1494559556; un=984173648@qq.com")
+    						.addCookie("Cookie", "")
     						.setDomain("weibo.com")
     						.setUserAgent("Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36");
 
